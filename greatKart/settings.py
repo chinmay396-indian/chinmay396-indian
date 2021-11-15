@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'category',
     'accounts',
     'store',
-    #'category.context_processors.menu_links',
+    'carts',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +68,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'category.context_processors.menu_links',
+                'carts.context_processors.counter',
 
             ],
         },
@@ -130,6 +131,23 @@ STATIC_URL = '/static/'
 STATIC_ROOT = 'C:\Chinmay\Django_projects\greatKart\static'
 STATICFILES_DIRS = [ 'greatKart/static', ]
 
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+
+}
+
 # Media files configuration
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+    50: 'critical',
+}
+#Authentication backends
+AUTHENTICATION_BACKENDS = (
+        'django.contrib.auth.backends.ModelBackend',
+    )
